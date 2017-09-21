@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -11,12 +12,13 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 const rootPath = __dirname;
 const srcPath = path.resolve(rootPath, 'src');
+const distPath = path.resolve(__dirname, 'dist');
 
 
 export default {
   context: srcPath,
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json'],
     modules: [srcPath, 'node_modules'],
     alias: {
       app: path.resolve(srcPath, 'app'),
@@ -30,7 +32,7 @@ export default {
     './app.jsx',
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: distPath,
     filename: 'app.js',
   },
   node: {
@@ -39,16 +41,51 @@ export default {
     tls: 'empty',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 2,
+                localIdentName: '[name]-[local]-[hash:base64:6]',
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      },
     ],
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('app.css'),
     HtmlWebpackPluginConfig,
   ],
   devServer: {

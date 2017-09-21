@@ -1,0 +1,8 @@
+.hello {
+  color: #BADA55;
+  transition: color 0.5s;
+
+  &:hover {
+    color: #FFAAAA;
+  }
+}
