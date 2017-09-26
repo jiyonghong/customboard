@@ -1,9 +1,41 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from 'app/components/App';
+
+// redux
+import { Provider } from 'react-redux';
+import configureStore from 'app/redux/store';
 
 
-ReactDom.render(
-  <App />,
-  document.getElementById('app'),
-);
+const store = configureStore();
+const rootEl = document.getElementById('app');
+
+const render = () => {
+  const AppContainer = require('./app/containers/AppContainer/index.jsx');
+  ReactDom.render(
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>,
+    rootEl,
+  );
+};
+
+
+if (module.hot) {
+  const rerender = () => {
+    try {
+      render();
+    } catch (error) {
+      const RedBox = require('redbox-react').default;
+      render(<RedBox error={error} />, rootEl);
+    }
+  };
+
+  module.hot.accept('./app/containers/AppContainer/index.jsx', () => {
+    setImmediate(() => {
+      ReactDom.unmountComponentAtNode(rootEl);
+      rerender();
+    });
+  });
+}
+
+render();

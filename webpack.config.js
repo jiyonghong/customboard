@@ -18,10 +18,11 @@ const distPath = path.resolve(__dirname, 'dist');
 export default {
   context: srcPath,
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['*', '.js', '.jsx', '.json'],
     modules: [srcPath, 'node_modules'],
     alias: {
       app: path.resolve(srcPath, 'app'),
+      assets: path.resolve(srcPath, 'assets'),
     },
   },
   entry: [
@@ -53,7 +54,7 @@ export default {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
@@ -78,7 +79,7 @@ export default {
               },
             },
           ],
-        }),
+        })),
       },
     ],
   },

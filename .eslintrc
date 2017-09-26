@@ -27,6 +27,7 @@
     "node": true
   },
   "rules": {
+    "global-require": 0,
     "react/prefer-stateless-function": 0,
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0

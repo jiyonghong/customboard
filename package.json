@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot --inline --config webpack.config.babel.js",
+    "start": "webpack-dev-server --inline --config webpack.config.babel.js",
     "webpack": "webpack --config webpack.config.prod.babel.js"
   },
   "author": "Jiyong Hong <jiyongh0204@gmail.com>",
@@ -13,11 +13,14 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "chalk": "^2.1.0",
     "html-webpack-plugin": "^2.30.1",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-css-modules": "^4.7.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   },
@@ -30,7 +33,9 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "css-hot-loader": "^1.3.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.7.1",
     "eslint-config-airbnb": "^15.1.0",
@@ -45,6 +50,7 @@
     "postcss-loader": "^2.0.6",
     "postcss-scss": "^1.0.2",
     "react-hot-loader": "^3.0.0-beta.7",
+    "redbox-react": "^1.5.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2"
   }
