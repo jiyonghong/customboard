@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+import { createBrowserHistory } from 'history';
+
 // redux
 import { Provider } from 'react-redux';
 import configureStore from 'app/redux/store';
 
+// react-router
+import { BrowserRouter } from 'react-router-dom';
 
-const store = configureStore();
+
+const history = createBrowserHistory();
+const store = configureStore(history);
 const rootEl = document.getElementById('app');
+
 
 const render = () => {
   const AppContainer = require('./app/containers/AppContainer/index.jsx');
   ReactDom.render(
     <Provider store={store}>
-      <AppContainer />
+      <BrowserRouter>
+        <AppContainer />
+      </BrowserRouter>
     </Provider>,
     rootEl,
   );

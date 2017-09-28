@@ -1,11 +1,17 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { routerMiddleware } from 'react-router-redux';
+
 import rootReducer from 'app/redux/reducer';
 
 
-export default (initialState) => {
+export default (history, initialState = {}) => {
+  const middlewares = [thunk, routerMiddleware(history)];
+
   const store = createStore(
     rootReducer,
     initialState,
+    applyMiddleware(...middlewares),
   );
 
   if (module.hot) {

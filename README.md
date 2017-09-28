@@ -7,6 +7,7 @@
 * Webpack 3
 * Babel ES6 (preset-2)
 * React 15.6.1
+* React Router v4
 * Redux
 * ESLint
 * SCSS (Global SCSS + Local SCSS)
