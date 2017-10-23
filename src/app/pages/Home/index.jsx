@@ -2,12 +2,16 @@ import React from 'react';
 
 import Layout from 'app/components/Layout';
 
+import ItemPicker from 'app/containers/ItemPickerContainer';
+import Viewer from 'app/containers/ViewerContainer';
+
 
 class Home extends React.Component {
   render() {
     return (
       <Layout>
-        <h1>hi</h1>
+        <Viewer />
+        <ItemPicker />
       </Layout>
     );
   }

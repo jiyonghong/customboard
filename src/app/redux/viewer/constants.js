@@ -1,0 +1,6 @@
+const CHANGE_PERSPECTIVE = 'viewer/CHANGE_PERSPECTIVE';
+
+
+export default {
+  CHANGE_PERSPECTIVE,
+};

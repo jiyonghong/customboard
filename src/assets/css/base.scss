@@ -1,5 +1,13 @@
+@import "~assets/css/vars/colors";
+
+
 html {
   font-family: Arial, sans-serif;
+  background-color: $lightest-gray;
+}
+
+html, body {
+  height: 100%;
 }
 
 h1 {
@@ -24,4 +32,13 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
 }

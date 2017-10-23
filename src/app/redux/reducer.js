@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 
-import nav from 'app/redux/nav/reducer';
+import itemPicker from 'app/redux/itemPicker/reducer';
+import viewer from 'app/redux/viewer/reducer';
 
 
 export default combineReducers({
-  nav,
+  itemPicker,
+  viewer,
 });

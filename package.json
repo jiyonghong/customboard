@@ -14,17 +14,23 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "chalk": "^2.1.0",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^2.30.1",
+    "konva": "^1.7.5",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-css-modules": "^4.7.1",
     "react-dom": "^15.6.1",
+    "react-fontawesome": "^1.6.1",
+    "react-konva": "^1.1.5",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "uuid": "^3.1.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   },
@@ -49,6 +55,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
     "json-loader": "^0.5.7",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
@@ -56,6 +63,7 @@
     "react-hot-loader": "^3.0.0-beta.7",
     "redbox-react": "^1.5.0",
     "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2"
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.6.2"
   }
 }

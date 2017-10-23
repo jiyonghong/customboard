@@ -35,7 +35,7 @@ if (module.hot) {
       render();
     } catch (error) {
       const RedBox = require('redbox-react').default;
-      render(<RedBox error={error} />, rootEl);
+      ReactDom.render(<RedBox error={error} />, rootEl);
     }
   };
 
