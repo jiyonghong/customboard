@@ -9,15 +9,15 @@ const initialState = {
   currentPage: 0,
   pages: [
     {
-      title: 'Deck',
+      title: '데크',
       items: decks,
     },
     {
-      title: 'Trucks',
+      title: '트럭',
       items: trucks,
     },
     {
-      title: 'Wheels',
+      title: '휠',
       items: wheels,
     },
   ],
@@ -30,15 +30,13 @@ export default (state = initialState, action) => {
     case c.TO_PREV_PAGE:
       return {
         ...state,
-        currentPage: state.currentPage > 0 ?
-          state.currentPage - 1 : state.currentPage,
+        currentPage: state.currentPage - 1,
       };
 
     case c.TO_NEXT_PAGE:
       return {
         ...state,
-        currentPage: state.currentPage + 1 < state.pages.length ?
-          state.currentPage + 1 : state.currentPage,
+        currentPage: state.currentPage + 1,
       };
 
     case c.SELECT_ITEM:

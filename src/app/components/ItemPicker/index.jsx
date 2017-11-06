@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import CSS from 'react-css-modules';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router-dom';
 
 import uuid from 'uuid';
 import classnames from 'classnames';
@@ -46,7 +47,7 @@ class ItemPicker extends React.Component {
             <span
               styleName={classnames(
                 'item-picker__header__nav__arrow',
-                currentPage === 0 ? 'disabled' : null,
+                currentPage === 0 ? 'hidden' : null,
               )}
               role="button"
               tabIndex={0}
@@ -57,7 +58,8 @@ class ItemPicker extends React.Component {
             <span
               styleName={classnames(
                 'item-picker__header__nav__arrow',
-                currentPage === pages.length - 1 ? 'disabled' : null,
+                currentPage === pages.length - 1 ? 'hidden' : null,
+                selectedId === null ? 'disabled' : null,
               )}
               role="button"
               tabIndex={0}
@@ -71,9 +73,15 @@ class ItemPicker extends React.Component {
         <div styleName="item-picker__content">
           <ul styleName="item-picker__content__list">
             {page.items.map((item, i) => (
-              <li key={uuid.v4()}>
+              <li
+                key={uuid.v4()}
+                styleName="item-picker__content__list__item"
+              >
                 <span
-                  styleName={selectedId === i ? 'selected' : null}
+                  styleName={classnames(
+                    'item-picker__content__list__item__name',
+                    selectedId === i ? 'item-picker__content__list__item__name--selected' : null,
+                  )}
                   role="button"
                   tabIndex={0}
                   onClick={handleSelectItem}
@@ -81,19 +89,22 @@ class ItemPicker extends React.Component {
                 >
                   {item.name}
                 </span>
+                <p styleName="item-picker__content__list__item__price">{item.price}</p>
               </li>
             ))}
           </ul>
         </div>
         <footer styleName="item-picker__footer">
-          <button
-            styleName={classnames(
-              'item-picker__footer__order-btn',
-              isAllSelected ? 'active' : null,
-            )}
-          >
-            주문하기
-          </button>
+          <Link to="/order">
+            <button
+              styleName={classnames(
+                'item-picker__footer__order-btn',
+                isAllSelected ? 'active' : null,
+              )}
+            >
+              주문하기
+            </button>
+          </Link>
         </footer>
       </section>
     );

@@ -77,6 +77,7 @@ export default {
                 sourceMap: true,
                 modules: true,
                 importLoaders: 2,
+                camelCase: 'dashes',
                 localIdentName: '[name]-[local]-[hash:base64:6]',
               },
             },

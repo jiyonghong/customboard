@@ -34,6 +34,10 @@
           margin-left: 30px;
         }
 
+        &.hidden {
+          visibility: hidden;
+        }
+
         &.disabled {
           color: gray;
         }
@@ -48,18 +52,27 @@
     &__list {
       padding: 30px 40px;
 
-      li {
+      &__item {
         color: $white;
         
-        & + li {
-          margin-top: 20px;
+        & + & {
+          margin-top: 24px;
         }
 
-        span {
+        &__name {
           cursor: pointer;
 
-          &.selected {
+          &--selected {
             color: $blue;
+          }
+        }
+
+        &__price {
+          padding-top: 10px;
+          color: $lighter-gray;
+
+          &:before {
+            content: "₩ ";
           }
         }
       }

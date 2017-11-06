@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { changePerspective } from 'app/redux/viewer/actions';
+import { itemSelector } from 'app/redux/itemPicker/selectors';
 
 import Viewer from 'app/components/Viewer';
 
@@ -10,27 +11,22 @@ import Viewer from 'app/components/Viewer';
 class ViewerContainer extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    pages: PropTypes.array.isRequired,
-    selectedIds: PropTypes.array.isRequired,
+    deck: PropTypes.object,
+    truck: PropTypes.object,
+    wheel: PropTypes.object,
     perspective: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    deck: null,
+    truck: null,
+    wheel: null,
   }
 
   constructor(props) {
     super(props);
 
-    this.getItem = this.getItem.bind(this);
     this.handleChangePerspective = this.handleChangePerspective.bind(this);
-  }
-
-  getItem(id) {
-    const {
-      pages,
-      selectedIds,
-    } = this.props;
-
-    const selectedId = selectedIds[id];
-
-    return selectedId !== null ? pages[id].items[selectedId] : null;
   }
 
   handleChangePerspective(e) {
@@ -40,13 +36,16 @@ class ViewerContainer extends React.Component {
   }
 
   render() {
-    const deck = this.getItem(0);
-    const truck = this.getItem(1);
-    const wheel = this.getItem(2);
-    const { perspective } = this.props;
+    const {
+      deck,
+      truck,
+      wheel,
+      perspective,
+    } = this.props;
 
     return (
       <Viewer
+        {...this.props}
         deck={deck}
         truck={truck}
         wheel={wheel}
@@ -58,7 +57,7 @@ class ViewerContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.itemPicker,
+  ...itemSelector(state),
   ...state.viewer,
 });
 const connector = connect(mapStateToProps);

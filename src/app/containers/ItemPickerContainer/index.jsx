@@ -28,13 +28,29 @@ class ItemPickerContainer extends React.Component {
   }
 
   handlePrevPage() {
-    const { dispatch } = this.props;
-    dispatch(toPrevPage());
+    const {
+      dispatch,
+      currentPage,
+    } = this.props;
+
+    // if not the first page
+    if (currentPage > 0) {
+      dispatch(toPrevPage());
+    }
   }
 
   handleNextPage() {
-    const { dispatch } = this.props;
-    dispatch(toNextPage());
+    const {
+      dispatch,
+      currentPage,
+      pages,
+      selectedIds,
+    } = this.props;
+
+    // if not the last page and selected item
+    if (currentPage + 1 < pages.length && selectedIds[currentPage] !== null) {
+      dispatch(toNextPage());
+    }
   }
 
   handleSelectItem(e) {

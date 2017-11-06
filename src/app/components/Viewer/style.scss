@@ -3,9 +3,6 @@
 
 .viewer {
   position: relative;
-  height: 100%;
-  margin-right: 300px;
-  overflow: auto;
 
   &__menu {
     position: absolute;
@@ -29,6 +26,7 @@
 
   &__canvas {
     height: 100%;
+    box-sizing: border-box;
 
     canvas {
       width: 100%;

@@ -1,0 +1,69 @@
+@import "~assets/css/vars/colors";
+
+
+.order-form {
+  background-color: $darker-gray;
+  border-radius: 4px;
+  padding: 30px 0;
+  margin-bottom: 50px;
+  color: $white;
+
+  &__dark-section {
+    background-color: $darkest-gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  &__indent {
+    padding-left: 20px;
+  }
+
+  fieldset {
+    padding-left: 40px;
+    padding-right: 40px;
+
+    + fieldset {
+      margin-top: 30px;
+    }
+
+    > * + * {
+      margin-top: 20px;
+    }
+  }
+
+  &__price {
+    float: right;
+
+    &::before {
+      content: "₩ ";
+    }
+  }
+
+  &__name {
+    float: none;
+    width: auto;
+    overflow: auto;
+  }
+
+  &__textarea {
+    display: block;
+    box-sizing: border-box;
+    padding: 12px;
+    line-height: 1.5;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    height: 150px;
+    resize: none;
+  }
+ 
+  &__btn {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+    height: 60px;
+    font-size: 16px;
+    background-color: $light-blue;
+    color: $white;
+  }
+}
