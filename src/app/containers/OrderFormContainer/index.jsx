@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { itemSelector } from 'app/redux/itemPicker/selectors';
 
@@ -9,10 +10,15 @@ import OrderForm from 'app/components/OrderForm';
 
 class OrderFormContainer extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    deck: PropTypes.object.isRequired,
-    truck: PropTypes.object.isRequired,
-    wheel: PropTypes.object.isRequired,
+    deck: PropTypes.object,
+    truck: PropTypes.object,
+    wheel: PropTypes.object,
+  }
+
+  static defaultProps = {
+    deck: null,
+    truck: null,
+    wheel: null,
   }
 
   render() {
@@ -21,6 +27,10 @@ class OrderFormContainer extends React.Component {
       truck,
       wheel,
     } = this.props;
+
+    if (deck === null || truck === null || wheel === null) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <OrderForm

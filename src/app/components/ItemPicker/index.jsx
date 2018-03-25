@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import CSS from 'react-css-modules';
-import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 
 import uuid from 'uuid';
@@ -53,7 +52,7 @@ class ItemPicker extends React.Component {
               tabIndex={0}
               onClick={handlePrevPage}
             >
-              <FontAwesome name="angle-left" />
+              이전
             </span>
             <span
               styleName={classnames(
@@ -65,23 +64,26 @@ class ItemPicker extends React.Component {
               tabIndex={0}
               onClick={handleNextPage}
             >
-              <FontAwesome name="angle-right" />
+              다음
             </span>
           </nav>
-          <p>{page.title}</p>
+          <p styleName="item-picker__header__title">{page.title}</p>
         </header>
         <div styleName="item-picker__content">
           <ul styleName="item-picker__content__list">
+            <li styleName="item-picker__content__list__item">
+              <p>{page.title}을/를 선택해주세요.</p>
+            </li>
             {page.items.map((item, i) => (
               <li
                 key={uuid.v4()}
-                styleName="item-picker__content__list__item"
+                styleName={classnames(
+                  'item-picker__content__list__item',
+                  selectedId === i ? 'item-picker__content__list__item--selected' : null,
+                )}
               >
                 <span
-                  styleName={classnames(
-                    'item-picker__content__list__item__name',
-                    selectedId === i ? 'item-picker__content__list__item__name--selected' : null,
-                  )}
+                  styleName="item-picker__content__list__item__name"
                   role="button"
                   tabIndex={0}
                   onClick={handleSelectItem}

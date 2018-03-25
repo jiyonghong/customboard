@@ -2,6 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import CSS from 'react-css-modules';
 
+import logo from 'assets/images/logo.png';
+
 import 'assets/css/app.scss';
 import 'font-awesome/css/font-awesome.css';
 
@@ -20,6 +22,9 @@ class Layout extends React.Component {
 
     return (
       <div>
+        <a styleName="logo" href="/">
+          <img src={logo} alt="샵으로" />
+        </a>
         {children}
       </div>
     );

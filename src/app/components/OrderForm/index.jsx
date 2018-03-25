@@ -12,6 +12,13 @@ class OrderForm extends React.Component {
     wheel: PropTypes.object.isRequired,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.bearingPrice = 30000;
+    this.completeDiscount = -30000;
+  }
+
   render() {
     const {
       deck,
@@ -45,10 +52,23 @@ class OrderForm extends React.Component {
             <p styleName="order-form__name">{wheel.name}</p>
           </div>
         </fieldset>
+        <fieldset>
+          <h4>베어링</h4>
+          <div className="clearfix" styleName="order-form__indent">
+            <p styleName="order-form__price">{this.bearingPrice}</p>
+          </div>
+        </fieldset>
+        <fieldset>
+          <h4>컴플릿 할인</h4>
+          <div className="clearfix" styleName="order-form__indent">
+            <p styleName="order-form__price">{this.completeDiscount}</p>
+          </div>
+        </fieldset>
         <fieldset styleName="order-form__dark-section">
           <div className="clearfix">
             <p styleName="order-form__price">
-              {(deck.price + truck.price + wheel.price).toLocaleString()}
+              {(deck.price + truck.price + wheel.price +
+                this.bearingPrice + this.completeDiscount).toLocaleString()}
             </p>
             <p styleName="order-form__name">총 가격</p>
           </div>

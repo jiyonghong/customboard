@@ -18,7 +18,7 @@ const distPath = path.resolve(__dirname, 'dist');
 export default {
   context: srcPath,
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     modules: [srcPath, 'node_modules'],
     alias: {
       app: path.resolve(srcPath, 'app'),
