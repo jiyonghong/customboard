@@ -6,8 +6,6 @@ import { Stage, Layer, Image } from 'react-konva';
 
 import classnames from 'classnames';
 
-import { capitalize } from 'app/utils/text';
-
 import grayBoardImg from 'assets/images/gray_board.png';
 
 import style from './style.scss';
@@ -74,7 +72,7 @@ class Viewer extends React.Component {
       const partData = props[part];
       if (partData !== null) {
         const image = new window.Image();
-        image.src = partData[`image${capitalize(props.perspective)}`];
+        image.src = partData.imageUrl;
         image.onload = () => {
           this.setState({
             [part]: {
@@ -113,17 +111,21 @@ class Viewer extends React.Component {
       bottom: ['deck', 'truck', 'wheel'],
     };
 
-    const deck = this.state.deck;
+    const {
+      deck,
+      canvasWidth,
+      canvasHeight,
+    } = this.state;
     if (deck === null || deck.image === undefined) {
       return null;
     }
 
-    const pos = deck[perspective];
+    const { layout } = deck;
 
     const pad = 40;
 
-    const paddedWidth = this.state.canvasWidth - (pad * 2);
-    const paddedHeight = this.state.canvasHeight - (pad * 2);
+    const paddedWidth = canvasWidth - (pad * 2);
+    const paddedHeight = canvasHeight - (pad * 2);
 
     // find scale to make images fit in the viewer
     const ratioX = paddedWidth / deck.image.width;
@@ -151,24 +153,24 @@ class Viewer extends React.Component {
       if (part === 'truck') {
         return (
           <Layer key={`${part}-layer`}>
-            <Image image={image} x={pos.truckFrontX} y={pos.truckFrontY} />
+            <Image image={image} x={layout.truckFrontX} y={layout.truckFrontY} />
             <Image
               image={image}
               offsetX={halfWidth}
               offsetY={halfHeight}
               rotation={180}
-              x={pos.truckBackX + halfWidth}
-              y={pos.truckBackY + halfHeight}
+              x={layout.truckBackX + halfWidth}
+              y={layout.truckBackY + halfHeight}
             />
           </Layer>
         );
       } else if (part === 'wheel') {
         return (
           <Layer key={`${part}-layer`}>
-            <Image image={image} x={pos.wheel1X} y={pos.wheel1Y} />
-            <Image image={image} x={pos.wheel2X} y={pos.wheel2Y} />
-            <Image image={image} x={pos.wheel3X} y={pos.wheel3Y} />
-            <Image image={image} x={pos.wheel4X} y={pos.wheel4Y} />
+            <Image image={image} x={layout.wheel1X} y={layout.wheel1Y} />
+            <Image image={image} x={layout.wheel2X} y={layout.wheel2Y} />
+            <Image image={image} x={layout.wheel3X} y={layout.wheel3Y} />
+            <Image image={image} x={layout.wheel4X} y={layout.wheel4Y} />
           </Layer>
         );
       }

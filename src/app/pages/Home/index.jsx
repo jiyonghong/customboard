@@ -5,6 +5,7 @@ import Layout from 'app/components/Layout';
 
 import ItemPicker from 'app/containers/ItemPickerContainer';
 import Viewer from 'app/containers/ViewerContainer';
+import GraphicSelector from 'app/containers/GraphicSelectorContainer';
 
 import styles from './style.scss';
 
@@ -18,6 +19,7 @@ class Home extends React.Component {
           responsive
           menu
         />
+        <GraphicSelector />
         <ItemPicker />
       </Layout>
     );

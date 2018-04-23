@@ -1,0 +1,49 @@
+@import "~assets/css/vars/colors";
+
+
+.graphic-selector {
+  position: fixed;
+  left: 0;
+  bottom: 0;  
+  width: 100%;
+  padding-right: 300px;
+  box-sizing: border-box;
+
+  &__wrap {
+    padding: 10px;
+    background-color: $white;
+  }
+
+  &__list {
+    overflow: auto;
+    white-space: nowrap;
+
+    &__item {
+      display: inline-block;
+
+      & + & {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.graphic {
+  width: 60px;
+  height: 60px;
+  border: 3px solid transparent;
+  box-sizing: border-box;
+  background-color: $lightest-gray;
+
+  &--selected {
+    border-color: $light-blue;
+  }
+}
+
+
+@media all and (max-width: 768px) {
+  .graphic-selector {
+    position: relative;
+    padding-right: 0;
+  }
+}
