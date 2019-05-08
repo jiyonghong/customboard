@@ -6,6 +6,8 @@ import { Stage, Layer, Image } from 'react-konva';
 
 import classnames from 'classnames';
 
+import { applyCanvasMask } from 'app/utils/canvas';
+
 import grayBoardImg from 'assets/images/gray_board.png';
 
 import style from './style.scss';
@@ -21,6 +23,7 @@ class Viewer extends React.Component {
     deck: PropTypes.object,
     truck: PropTypes.object,
     wheel: PropTypes.object,
+    graphic: PropTypes.object,
     perspective: PropTypes.string.isRequired,
     handleChangePerspective: PropTypes.func.isRequired,
   }
@@ -34,17 +37,28 @@ class Viewer extends React.Component {
     deck: null,
     truck: null,
     wheel: null,
+    graphic: null,
   }
 
   constructor(props) {
     super(props);
 
+    const {
+      width: canvasWidth,
+      height: canvasHeight,
+      deck,
+      truck,
+      wheel,
+      graphic,
+    } = props;
+
     this.state = {
-      canvasWidth: props.width,
-      canvasHeight: props.height,
-      deck: props.deck,
-      truck: props.truck,
-      wheel: props.wheel,
+      canvasWidth,
+      canvasHeight,
+      deck,
+      truck,
+      wheel,
+      graphic,
     };
 
     this.handleResize = this.handleResize.bind(this);
@@ -67,7 +81,7 @@ class Viewer extends React.Component {
   }
 
   loadImages(props = this.props) {
-    const parts = ['deck', 'truck', 'wheel'];
+    const parts = ['deck', 'truck', 'wheel', 'graphic'];
     parts.forEach((part) => {
       const partData = props[part];
       if (partData !== null) {
@@ -79,6 +93,32 @@ class Viewer extends React.Component {
               ...partData,
               image,
             },
+          }, () => {
+            const {
+              deck,
+              graphic,
+            } = this.state;
+
+            if (deck.image && graphic.image) {
+              const maskedImage = new window.Image();
+              const src = applyCanvasMask(
+                graphic.image,
+                deck.image,
+                deck.image.width,
+                deck.image.height,
+                true,
+              );
+
+              maskedImage.src = src;
+              maskedImage.onload = () => {
+                this.setState({
+                  deck: {
+                    ...deck,
+                    image: maskedImage,
+                  },
+                });
+              };
+            }
           });
         };
       }
@@ -146,7 +186,7 @@ class Viewer extends React.Component {
       }
 
       // set images in the center
-      const image = partData.image;
+      const { image } = partData;
       const halfWidth = image.width / 2;
       const halfHeight = image.height / 2;
 
@@ -184,8 +224,8 @@ class Viewer extends React.Component {
 
     return (
       <Stage
-        width={this.state.canvasWidth}
-        height={this.state.canvasHeight}
+        width={canvasWidth}
+        height={canvasHeight}
         scaleX={scale}
         scaleY={scale}
         x={centerX}

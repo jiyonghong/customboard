@@ -1,18 +1,18 @@
-import * as c from './constants';
+import * as t from './types';
 
 
 const toPrevPage = () => ({
-  type: c.TO_PREV_PAGE,
+  type: t.TO_PREV_PAGE,
 });
 
 
 const toNextPage = () => ({
-  type: c.TO_NEXT_PAGE,
+  type: t.TO_NEXT_PAGE,
 });
 
 
 const selectItem = (pageType, index) => ({
-  type: c.SELECT_ITEM,
+  type: t.SELECT_ITEM,
   pageType,
   index,
 });

@@ -2,7 +2,7 @@ import decks from 'app/data/decks.js';
 import trucks from 'app/data/trucks.js';
 import wheels from 'app/data/wheels.js';
 
-import * as c from './constants';
+import * as t from './types';
 
 
 const initialState = {
@@ -21,25 +21,25 @@ const initialState = {
       items: wheels,
     },
   ],
-  selectedIds: [0, 0, 0],
+  selectedIds: [0, null, null],
 };
 
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case c.TO_PREV_PAGE:
+    case t.TO_PREV_PAGE:
       return {
         ...state,
         currentPage: state.currentPage - 1,
       };
 
-    case c.TO_NEXT_PAGE:
+    case t.TO_NEXT_PAGE:
       return {
         ...state,
         currentPage: state.currentPage + 1,
       };
 
-    case c.SELECT_ITEM:
+    case t.SELECT_ITEM:
       return {
         ...state,
         selectedIds: state.selectedIds.map((selectedId, i) => {

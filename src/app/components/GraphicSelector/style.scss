@@ -34,6 +34,11 @@
   border: 3px solid transparent;
   box-sizing: border-box;
   background-color: $lightest-gray;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  outline: none;
 
   &--selected {
     border-color: $light-blue;

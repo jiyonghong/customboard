@@ -1,12 +1,19 @@
-import * as c from './constants';
+import * as t from './types';
 
 
 const changePerspective = perspective => ({
-  type: c.CHANGE_PERSPECTIVE,
+  type: t.CHANGE_PERSPECTIVE,
   perspective,
+});
+
+
+const changeGraphic = graphicId => ({
+  type: t.CHANGE_GRAPHIC,
+  graphicId,
 });
 
 
 export default {
   changePerspective,
+  changeGraphic,
 };

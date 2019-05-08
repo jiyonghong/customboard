@@ -14,6 +14,7 @@ class ViewerContainer extends React.Component {
     deck: PropTypes.object,
     truck: PropTypes.object,
     wheel: PropTypes.object,
+    graphic: PropTypes.object,
     perspective: PropTypes.string.isRequired,
   }
 
@@ -21,6 +22,7 @@ class ViewerContainer extends React.Component {
     deck: null,
     truck: null,
     wheel: null,
+    graphic: null,
   }
 
   constructor(props) {
@@ -40,6 +42,7 @@ class ViewerContainer extends React.Component {
       deck,
       truck,
       wheel,
+      graphic,
       perspective,
     } = this.props;
 
@@ -49,6 +52,7 @@ class ViewerContainer extends React.Component {
         deck={deck}
         truck={truck}
         wheel={wheel}
+        graphic={graphic}
         perspective={perspective}
         handleChangePerspective={this.handleChangePerspective}
       />

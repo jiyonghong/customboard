@@ -1,6 +1,8 @@
 const CHANGE_PERSPECTIVE = 'viewer/CHANGE_PERSPECTIVE';
 
+const CHANGE_GRAPHIC = 'viewer/CHANGE_GRAPHIC';
 
 export default {
   CHANGE_PERSPECTIVE,
+  CHANGE_GRAPHIC,
 };
