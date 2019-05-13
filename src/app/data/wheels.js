@@ -1,10 +1,10 @@
-import wheel from 'assets/images/wheel.png';
+import rayneRed from 'assets/images/wheels/rayne_red.png';
 
 
 export default [
   {
-    name: 'Orangatang Stimulus Orange',
+    name: 'Rayne 레드',
     price: 75000,
-    imageUrl: wheel,
+    imageUrl: rayneRed,
   },
 ];

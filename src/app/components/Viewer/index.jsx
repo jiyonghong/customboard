@@ -128,8 +128,8 @@ class Viewer extends React.Component {
   handleResize() {
     this.tick = false;
 
-    const canvasWidth = this.viewerRef.clientWidth;
-    const canvasHeight = this.viewerRef.clientHeight;
+    const canvasWidth = this.canvasRef.clientWidth;
+    const canvasHeight = this.canvasRef.clientHeight;
 
     this.setState({
       canvasWidth,
@@ -251,7 +251,6 @@ class Viewer extends React.Component {
       <section
         className={className}
         styleName="viewer"
-        ref={(viewerRef) => { this.viewerRef = viewerRef; }}
       >
         {menu ? (
           <div styleName="viewer__menu">
@@ -270,7 +269,10 @@ class Viewer extends React.Component {
           </div>
         ) : null}
         {deck !== null || truck !== null || wheel !== null ? (
-          <div styleName="viewer__canvas">
+          <div
+            styleName="viewer__canvas"
+            ref={(canvasRef) => { this.canvasRef = canvasRef; }}
+          >
             {this.renderCanvas()}
           </div>
         ) : (

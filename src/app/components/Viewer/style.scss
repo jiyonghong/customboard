@@ -25,6 +25,9 @@
   }
 
   &__canvas {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     box-sizing: border-box;
 
@@ -56,6 +59,6 @@
 @media all and (max-width: 768px) {
   .viewer {
     margin-right: 0 !important;
-    height: 60% !important;
+    height: 50% !important;
   }
 }

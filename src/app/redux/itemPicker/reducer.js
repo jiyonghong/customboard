@@ -21,7 +21,8 @@ const initialState = {
       items: wheels,
     },
   ],
-  selectedIds: [0, null, null],
+  // selectedIds: [0, null, null],
+  selectedIds: [0, 0, 0],
 };
 
 

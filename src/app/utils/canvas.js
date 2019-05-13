@@ -61,7 +61,11 @@ const applyCanvasMask = (image, mask, width, height, asBase64) => {
   outputCanvas.height = height;
 
   // draw the base image
-  buffer.drawImage(image, 0, 0);
+  if (image.width > mask.width) {
+    buffer.drawImage(image, 0, 0, mask.width, mask.height);
+  } else {
+    buffer.drawImage(image, 0, 0);
+  }
 
   // draw the mask directly below
   buffer.drawImage(mask, 0, height);
@@ -94,6 +98,4 @@ const applyCanvasMask = (image, mask, width, height, asBase64) => {
 };
 
 
-export default {
-  applyCanvasMask,
-};
+export default { applyCanvasMask };

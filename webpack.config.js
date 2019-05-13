@@ -123,6 +123,8 @@ export default {
   ],
   devServer: {
     hot: true,
+    port: '8000',
     contentBase: './src',
+    host: '0.0.0.0',
   },
 };

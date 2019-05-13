@@ -1,4 +1,4 @@
-import sweetpea from 'assets/images/sweetpea.png';
+import sweetpea from 'assets/images/sweetpea_small.png';
 
 
 export default [
@@ -7,30 +7,18 @@ export default [
     price: 160000,
     imageUrl: sweetpea,
     layout: {
-      // truckFrontX: 201,
-      // truckFrontY: 58,
-      // truckBackX: 1553,
-      // truckBackY: 58,
-      // wheel1X: 241,
-      // wheel1Y: 49,
-      // wheel2X: 1580,
-      // wheel2Y: 49,
-      // wheel3X: 241,
-      // wheel3Y: 531,
-      // wheel4X: 1580,
-      // wheel4Y: 531,
-      truckFrontX: 160,
-      truckFrontY: 58,
-      truckBackX: 1660,
-      truckBackY: 58,
-      wheel1X: 200,
-      wheel1Y: 49,
-      wheel2X: 1687,
-      wheel2Y: 53,
-      wheel3X: 200,
-      wheel3Y: 532,
-      wheel4X: 1687,
-      wheel4Y: 536,
+      truckFrontX: 50,
+      truckFrontY: 28,
+      truckBackX: 850,
+      truckBackY: 28,
+      wheel1X: 86,
+      wheel1Y: 22,
+      wheel2X: 860,
+      wheel2Y: 22,
+      wheel3X: 86,
+      wheel3Y: 258,
+      wheel4X: 860,
+      wheel4Y: 258,
     },
   },
 ];
